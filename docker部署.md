@@ -23,3 +23,7 @@ cat >> /etc/docker/daemon.json << EOF
 EOF
 ```
 
+
+
+![image-20220915225425847](docker部署.assets/image-20220915225425847.png)
+
