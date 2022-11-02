@@ -1,4 +1,9 @@
 #!/usr/bin/bash
+
+#ref for the article
+#https://www.cnblogs.com/davis12/p/15129665.html
+
+
 set -eou pipefail
 
 # 原主机名 VM-4-15-centos
