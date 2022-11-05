@@ -1,0 +1,22 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: add docker repo
+      shell: yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+    - name: yum cleanall and cache
+      shell: yum clean all && yum makecache
+
+    - name: install docer
+      yum:
+        name: docker-ce-20.10.1-3.el7
+        state: present
+    - name: config mirro
+      copy: src=~/daemon.json dest=/etc/docker/daemon.json
+      tags: configmirro
+    - name: start enable docker
+      service: name=docker state=started enabled=true
+    - name: restrat
+      shell: systemctl daemon-reload && sudo systemctl restart docker
+      tags: restart
