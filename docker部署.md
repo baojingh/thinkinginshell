@@ -1,4 +1,5 @@
 ```bash
+yum install -y wget
 wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O/etc/yum.repos.d/docker-ce.repo
 yum clean all
 yum makecache
@@ -8,11 +9,7 @@ systemctl enable docker
 wget https://github.com/docker/compose/releases/download/1.25.4/docker-compose-Linux-x86_64 /root/docker-compose
 /bin/cp /root/docker-compose /usr/local/bin
 chmod 777 /usr/local/bin/docker-compose
-```
 
-
-
-```bash
 cat >> /etc/docker/daemon.json << EOF
 {
   "registry-mirrors": [
@@ -21,6 +18,10 @@ cat >> /etc/docker/daemon.json << EOF
   ]
 }
 EOF
+
+systemctl restart docker
+
+
 ```
 
 
